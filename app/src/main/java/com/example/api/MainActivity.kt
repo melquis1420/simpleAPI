@@ -3,6 +3,7 @@ package com.example.api
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.ProxyFileDescriptorCallback
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.Toast
@@ -53,9 +54,9 @@ class MainActivity : AppCompatActivity() {
                 response.body()?.let {
                     it.data.forEach {
                         //Set first name + last name
-                        list += it.firstName + "" + it.lastName
-                    }
+                        list += it.firstName + " " + it.lastName
 
+                    }
                     setValues()
                 }
             }
@@ -67,7 +68,9 @@ class MainActivity : AppCompatActivity() {
             this,
             androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
             list.toTypedArray()
+
         )
         listView.adapter = adapter
+        Log.i("LISTA", "" + adapter);
     }
 }

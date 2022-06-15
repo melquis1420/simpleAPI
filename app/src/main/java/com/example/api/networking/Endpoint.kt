@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 interface Endpoint {
 
-    @GET("api/user")
+    @GET("api/users")
     fun getUsers() : Call<PageUser>
 }
