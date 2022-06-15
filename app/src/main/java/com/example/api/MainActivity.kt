@@ -24,20 +24,23 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //
+        // Create bind Activity/View
         listView = findViewById(R.id.lista)
 
-        getUser()
+        //Search users method
+        getUsers()
     }
 
-    fun getUser() {
-        val retrofitClient = NetworkUtils.getRetrofitInstance("https://reqrest.in")
+    fun getUsers() {
 
+        //Variavle server configuration
+        val retrofitClient = NetworkUtils.getRetrofitInstance("https://reqres.in")
 
+        // Apply the requisition
         val endpoint = retrofitClient.create(Endpoint::class.java)
-        val callback = endpoint.getUser()
+        val callback = endpoint.getUsers()
 
-
+        //Take the answer
         callback.enqueue(object : Callback<PageUser> {
 
 
@@ -45,10 +48,11 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(baseContext, t.message, Toast.LENGTH_SHORT).show()
             }
 
+            //On Sucess
             override fun onResponse(call: Call<PageUser>, response: Response<PageUser>) {
                 response.body()?.let {
                     it.data.forEach {
-
+                        //Set first name + last name
                         list += it.firstName + "" + it.lastName
                     }
 
