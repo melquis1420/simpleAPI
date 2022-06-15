@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         //Take the answer
         callback.enqueue(object : Callback<PageUser> {
 
-
+            //On Failure
             override fun onFailure(call: Call<PageUser>, t: Throwable) {
                 Toast.makeText(baseContext, t.message, Toast.LENGTH_SHORT).show()
             }

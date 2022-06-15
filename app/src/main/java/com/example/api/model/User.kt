@@ -13,7 +13,7 @@ data class User(
     var firstName: String,
 
     @SerializedName("last_name")
-    var lastName: Int,
+    var lastName: String,
 
     @SerializedName("avatar")
     var avatar: String
